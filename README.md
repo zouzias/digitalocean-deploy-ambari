@@ -1,4 +1,4 @@
-# Install Apache Ambari server-client on Digitalocean
+# Install Apache Ambari server & clients on Digitalocean
 
 ## Setup:
 
@@ -26,13 +26,21 @@ Similary, change ambari-clients.txt to the desired hostname for all ambari clien
 ### How to setup Apache ambari server
 
 ```
-fab init
+ruby createAmbariServer.rb
+fab install_ntp             # install network time protocol
+fab init                    # install ambari-server package
+fab ambari_start            # Start ambari-server process
 ```
+Make sure that the ambari-server process is running (connect to server droplet using `./connect.sh`)
+
 ### How to setup Apache ambari clients
 
 ```
-fab clients bootstrap
+ruby createAmbariClients.rb
+fab clients install_ntp  # install network time protocol
 ```
+
+Then login on `ambari-server.your_domain_name.com:8080` with username/password admin/admin
 
 ## Requirements:
 
