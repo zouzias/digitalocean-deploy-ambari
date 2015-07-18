@@ -11,7 +11,7 @@ domain = 'zouzias.org'
 
 # Populate host names 
 with open('ambari-server.txt') as f:
-    env.hosts = f.readlines()
+    env.hosts = f.readlines()[0].strip() + '.' + domain
 
 ##############################
 # Install puppet etc
