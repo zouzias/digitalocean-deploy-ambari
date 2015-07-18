@@ -17,15 +17,22 @@ Edit the following file accordingly:
 Change the following line in `fabfile.py` to point to the ssh key associated with the above VMs. 
 `env.key_filename = '~/.ssh/digitalocean_rsa'`
 
-## How to setup Apache ambari
+#### Update hostname for clients and server
 
-First, run the following fog script to create a VM under zc2 with hostname ambari.zouzias.org.
+Update ambari-server.txt to your desired name for ambari-server. Also change the the `domain` variable on createAmbariServer.rb to your domain name (currently `zouzias.org`)
+
+Similary, change ambari-clients.txt to the desired hostname for all ambari clients. Each line will correspond to a new droplet! Also change the the `domain` variable on createAmbariClients.rb to your domain name (currently `zouzias.org`)
+
+### How to setup Apache ambari server
 
 ```
-XXX
+fab init
 ```
+### How to setup Apache ambari clients
 
-Then, Run ``fab init`` and ``fab deploy`` to install apache tomcat into the VMS.
+```
+fab clients bootstrap
+```
 
 ## Requirements:
 
