@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 
-# Common taks using digitalocean v2 API
+# Common tasks using digitalocean v2 API
 
 def list_sshkeys(client)
         sshkey_ids = []
