@@ -42,7 +42,8 @@ Then login on `ambari-server.your_domain_name.com:8080` with username/password a
 
 ## Requirements:
 
-* Install Ruby
+* Install Ruby and Ruby gems
+* Install droplet_kit (gem install droplet_kit)
 * Install python >= 2.7.
 * Install fabric, i.e., `pip install fabric` (http://www.fabfile.org/en/latest/).
 
