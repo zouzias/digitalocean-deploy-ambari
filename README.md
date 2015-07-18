@@ -1,8 +1,6 @@
 # Install Apache Ambari server & clients on Digitalocean
 
-## Setup:
-
-#### First, put your credentials in `config.rb`
+### First, put your credentials in `config.rb`
 
 Edit the following file accordingly:
 
