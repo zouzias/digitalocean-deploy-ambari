@@ -5,10 +5,11 @@
 # IMPORTANT: Update the SSH key below
 
 HOST=`cat ambari-server.txt`
+DOMAIN="zouzias.org"
 KEY='/Users/zouzias/.ssh/digitalocean_rsa'
 
 echo "KEY ${KEY}"
 echo "HOST ${HOST}"
 
-ssh -i ${KEY}  root@${HOST}
+ssh -i ${KEY}  root@${HOST}.${DOMAIN}
 
