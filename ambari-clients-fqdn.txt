@@ -1,0 +1,3 @@
+hadoop1.zouzias.org
+hadoop2.zouzias.org
+hadoop3.zouzias.org
