@@ -7,9 +7,9 @@
 
 image  = 'ubuntu-12-04-x64'
 region = 'fra1'
-size   = '8gb'
+size   = '1gb'
 sshkey = 726646
-domain = 'zouzias.org'	/* You domain name*/
+domain = 'zouzias.org'	# You domain name
 
 # Install with 'gem install droplet_kit'
 require 'droplet_kit'
