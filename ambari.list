@@ -1,2 +1,1 @@
-#VERSION_NUMBER=2.1.0-1409
-deb http://s3.amazonaws.com/dev.hortonworks.com/ambari/ubuntu12/2.x/BUILDS/2.1.0-1409 Ambari main
+deb http://public-repo-1.hortonworks.com/ambari/ubuntu12/2.x/updates/2.0.1 Ambari main
