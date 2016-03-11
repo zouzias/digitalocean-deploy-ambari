@@ -1,4 +1,5 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
+
 
 # Common tasks using digitalocean v2 API
 

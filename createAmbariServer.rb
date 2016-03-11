@@ -1,9 +1,10 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
+
 
 # Create a droplet with FQDN the contents of ambari-server.txt appended with @domain variable below. Adds also a A record DNS entry.
 
 
-image  = 'ubuntu-12-04-x64'
+image  = 'ubuntu-14-04-x64'
 region = 'fra1'
 size   = '512m'
 sshkey = 726646

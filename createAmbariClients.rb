@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
 # Creates a droplet with domain name prefix equal to each line on file `ambari-client.txt`
 #
