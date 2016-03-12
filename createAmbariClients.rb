@@ -7,9 +7,7 @@
 
 image  = 'ubuntu-12-04-x64'
 region = 'fra1'
-size   = '1gb'
-sshkey = 726646
-domain = 'zouzias.org'	# You domain name
+size   = '8gb'
 
 # Install with 'gem install droplet_kit'
 require 'droplet_kit'
@@ -28,11 +26,11 @@ name = name.chomp
 
 puts "Selected region      : " + region
 puts "Selected size        : " + size
-puts "Selected key         : " + sshkey.to_s
+puts "Selected key         : " + @sshkey.to_s
 puts "Selected droplet name: [" + name  + "]"
 
 # TODO fetch SSH keys from digitalocean
-droplet = DropletKit::Droplet.new(name: name + "." + domain , region: region, size: size, image: image, ssh_keys: [sshkey.to_s])
+droplet = DropletKit::Droplet.new(name: name + "." + @domain , region: region, size: size, image: image, ssh_keys: [@sshkey.to_s])
 
 created = client.droplets.create(droplet)
 
@@ -57,7 +55,7 @@ domain_record = DropletKit::DomainRecord.new(
   data: ip,
 )
 
-created = client.domain_records.create(domain_record, for_domain: domain)
+created = client.domain_records.create(domain_record, for_domain: @domain)
 print created.inspect
 
 
