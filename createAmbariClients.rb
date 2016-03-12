@@ -2,12 +2,6 @@
 
 # Creates a droplet with domain name prefix equal to each line on file `ambari-client.txt`
 #
-#
-# Important : Droplet RAM must be >= 8gb (if use hive/hdfs/spark)
-
-image  = 'ubuntu-12-04-x64'
-region = 'fra1'
-size   = '8gb'
 
 # Install with 'gem install droplet_kit'
 require 'droplet_kit'
@@ -24,13 +18,13 @@ File.readlines('ambari-clients.txt').each do |name|
 # Remove \n
 name = name.chomp
 
-puts "Selected region      : " + region
-puts "Selected size        : " + size
+puts "Selected region      : " + @region
+puts "Selected size        : " + @client_size
 puts "Selected key         : " + @sshkey.to_s
 puts "Selected droplet name: [" + name  + "]"
 
 # TODO fetch SSH keys from digitalocean
-droplet = DropletKit::Droplet.new(name: name + "." + @domain , region: region, size: size, image: image, ssh_keys: [@sshkey.to_s])
+droplet = DropletKit::Droplet.new(name: name + "." + @domain , region: @region, size: @client_size, image: @image, ssh_keys: [@sshkey.to_s])
 
 created = client.droplets.create(droplet)
 
