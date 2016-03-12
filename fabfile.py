@@ -52,6 +52,9 @@ def apt_upgrade():
 def uptime():
     run('uptime')
 
+def stop_iptables():
+    run('ufw disable')
+
 def install_ntp():
    apt_update()
    sudo('apt-get install -y ntp')
