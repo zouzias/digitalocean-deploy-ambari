@@ -22,6 +22,8 @@ def init():
     apt_update()
     sudo('apt-get install -qy ambari-server')
     sudo('ambari-server setup --silent')
+    stop_firewall()
+    install_ntp()
 
 def ambari_start():
     sudo('ambari-server start')
@@ -32,9 +34,6 @@ def ambari_status():
 def clients():
     with open('ambari-clients-fqdn.txt') as f:
         env.hosts = f.readlines()
-
-def iptables_stop():
-    sudo('service iptables stop')
 
 # Copy files puppet related files
 def copy_files():
@@ -52,7 +51,7 @@ def apt_upgrade():
 def uptime():
     run('uptime')
 
-def stop_iptables():
+def stop_firewall():
     run('ufw disable')
 
 def install_ntp():

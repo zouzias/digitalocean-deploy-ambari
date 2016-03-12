@@ -8,3 +8,8 @@
 @domain = 'zouzias.org'  # You domain name
 @image  = 'ubuntu-14-04-x64'
 
+
+#
+## Important : Droplet RAM must be >= 8gb (if use hive/hdfs/spark)
+
+@client_size   = '8gb'
