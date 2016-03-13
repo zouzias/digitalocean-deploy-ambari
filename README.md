@@ -11,25 +11,35 @@ Edit the following file accordingly:
 ```
 #!/usr/bin/ruby
 
-@docean_key       = 'your token api v2 key'
+@docean_key       = 'your token api v2 key' // read from env `ENV['DIGOCEAN_TOKEN']`
+@region = 'fra1'
+@sshkey = XXX
+@domain = 'zouzias.org'  # You domain name
+@image  = 'ubuntu-14-04-x64'
+
+
+#
+## Important : Droplet RAM must be >= 8gb (if use hive/hdfs/spark)
+
+@client_size   = '8gb'
+
 ```
 
 #### SSH key for `fabric`
 
-Change the following line in `fabfile.py` to point to the ssh key associated with the above VMs. 
-`env.key_filename = '~/.ssh/digitalocean_rsa'`
+Change the following line in `fabfile.py` to point to the ssh key associated with the above VMs
+`env.key_filename = '~/.ssh/digitalocean_rsa'` Also update the domain name.
 
 #### Update hostname for clients and server
 
-Update ambari-server.txt to your desired name for ambari-server. Also change the the `domain` variable on createAmbariServer.rb to your domain name (currently `zouzias.org`)
+Update ambari-server.txt to your desired name for ambari-server.
 
-Similary, change ambari-clients.txt to the desired hostname for all ambari clients. Each line will correspond to a new droplet! Also change the the `domain` variable on createAmbariClients.rb to your domain name (currently `zouzias.org`)
+Similary, change ambari-clients.txt to the desired hostname for all ambari clients. Each line will correspond to a new droplet! 
 
 ### How to setup Apache ambari server
 
 ```
 ruby createAmbariServer.rb
-fab install_ntp             # install network time protocol
 fab init                    # install ambari-server package
 fab ambari_start            # Start ambari-server process
 ```
