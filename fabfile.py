@@ -32,8 +32,11 @@ def ambari_status():
     sudo('ambari-server status')
 
 def clients():
-    with open('ambari-clients-fqdn.txt') as f:
-        env.hosts = f.readlines()
+    with open('ambari-clients.txt') as f:
+	lines = f.readlines()
+	env.hosts = []
+	for line in lines:
+	    env.hosts.append(line.strip() + '.' + domain)
 
 # Copy files puppet related files
 def copy_files():
