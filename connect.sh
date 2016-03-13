@@ -6,10 +6,13 @@
 
 HOST=`cat ambari-server.txt`
 DOMAIN="zouzias.org"
-KEY='/Users/zouzias/.ssh/digitalocean_rsa'
+USER=$(whoami)
+KEY="/Users/${USER}/.ssh/digitalocean_rsa"
 
 echo "KEY ${KEY}"
+echo "USER ${USER}"
 echo "HOST ${HOST}"
+echo "DOMAIN ${DOMAIN}"
 
 ssh -i ${KEY}  root@${HOST}.${DOMAIN}
 
