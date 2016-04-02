@@ -2,7 +2,7 @@
 
 This project installs ambari-server and also prepares droplets serving as clients for Ambari. It also adds FQDN for both server and clients.
 
-This project assumes that you use [digitalocean](https://www.digitalocean.com/) and have setup a domain under digitalocean. This project is tested using Ubuntu 12.04 droplets.
+This project assumes that you use [digitalocean](https://www.digitalocean.com/) and have setup a domain under digitalocean. This project is tested using Ubuntu 14.04 droplets.
 
 ### First, put your credentials in `config.rb`
 
@@ -65,5 +65,5 @@ Then login on `ambari-server.your_domain_name.com:8080` with username/password a
 ### Optional - Advanced
 
 ```
-TODO : Cleanup deployment
+TODO : Cleanup deployment, i.e., provide clean up functionality after destroy of all droplets.
 ```
