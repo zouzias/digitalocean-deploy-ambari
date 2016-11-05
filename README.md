@@ -34,13 +34,16 @@ Change the following line in `fabfile.py` to point to the ssh key associated wit
 
 Update ambari-server.txt to your desired name for ambari-server.
 
-Similary, change ambari-clients.txt to the desired hostname for all ambari clients. Each line will correspond to a new droplet! 
+Similary, change ambari-clients.txt to the desired hostname for all ambari clients. Each line will correspond to a new droplet!
 
 ### How to setup Apache ambari server
 
 ```
 ruby createAmbariServer.rb
 fab init                    # install ambari-server package
+fab install_ntp             # install network time protocol
+fab init                    # install ambari repo info
+fab install_ambari_server   # install ambari-server package
 fab ambari_start            # Start ambari-server process
 ```
 Make sure that the ambari-server process is running (connect to server droplet using `./connect.sh`)

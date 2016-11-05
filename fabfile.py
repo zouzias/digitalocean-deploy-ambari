@@ -20,6 +20,8 @@ def init():
     put('ambari.list', '/etc/apt/sources.list.d/', use_sudo=True)
     sudo('apt-key adv --recv-keys --keyserver keyserver.ubuntu.com B9733A7A07513CAD')
     apt_update()
+
+def install_ambari_server():
     sudo('apt-get install -qy ambari-server')
     sudo('ambari-server setup --silent')
     stop_firewall()
@@ -60,6 +62,10 @@ def stop_firewall():
 def install_ntp():
    apt_update()
    sudo('apt-get install -y ntp')
+
+def install_ambari_agents():
+   apt_update()
+   sudo('apt-get install -y ambari-agent')
 
 def start_ntp():
    sudo('service ntp restart')
