@@ -6,7 +6,7 @@
 
 image  = 'ubuntu-14-04-x64'
 region = 'fra1'
-size   = '512m'
+size   = '1g'
 
 # Install with 'gem install droplet_kit'
 require 'droplet_kit'
@@ -28,7 +28,7 @@ puts "Selected key         : " + @sshkey.to_s
 puts "Selected droplet name: [" + name + "]"
 
 # TODO fetch SSH keys from digitalocean
-droplet = DropletKit::Droplet.new(name: name + "." + @domain , region: region, size: '512mb', image: image, ssh_keys: [@sshkey.to_s])
+droplet = DropletKit::Droplet.new(name: name + "." + @domain , region: region, size: size, image: image, ssh_keys: [@sshkey.to_s])
 
 created = client.droplets.create(droplet)
 
