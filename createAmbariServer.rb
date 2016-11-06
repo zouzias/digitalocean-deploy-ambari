@@ -3,11 +3,6 @@
 
 # Create a droplet with FQDN the contents of ambari-server.txt appended with @domain variable below. Adds also a A record DNS entry.
 
-
-image  = 'ubuntu-14-04-x64'
-region = 'fra1'
-size   = '1g'
-
 # Install with 'gem install droplet_kit'
 require 'droplet_kit'
 require './config.rb'
@@ -22,13 +17,14 @@ file = File.open("ambari-server.txt", "r")
 name = file.read.chomp
 file.close()
 
-puts "Selected region      : " + region
-puts "Selected size        : " + size
+puts "Droplet image        : " + @image
+puts "Selected region      : " + @region
+puts "Selected size        : " + @server_size
 puts "Selected key         : " + @sshkey.to_s
 puts "Selected droplet name: [" + name + "]"
 
 # TODO fetch SSH keys from digitalocean
-droplet = DropletKit::Droplet.new(name: name + "." + @domain , region: region, size: size, image: image, ssh_keys: [@sshkey.to_s])
+droplet = DropletKit::Droplet.new(name: name + "." + @domain , region: @region, size: @server_size, image: @image, ssh_keys: [@sshkey.to_s])
 
 created = client.droplets.create(droplet)
 

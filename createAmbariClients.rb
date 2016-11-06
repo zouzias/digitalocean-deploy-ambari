@@ -18,6 +18,7 @@ File.readlines('ambari-clients.txt').each do |name|
 # Remove \n
 name = name.chomp
 
+puts "Droplet image        : " + @image
 puts "Selected region      : " + @region
 puts "Selected size        : " + @client_size
 puts "Selected key         : " + @sshkey.to_s
