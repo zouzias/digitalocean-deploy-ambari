@@ -40,9 +40,8 @@ Similary, change ambari-clients.txt to the desired hostname for all ambari clien
 
 ```
 ruby createAmbariServer.rb
-fab init                    # install ambari-server package
-fab install_ntp             # install network time protocol
 fab init                    # install ambari repo info
+fab install_ntp             # install network time protocol
 fab install_ambari_server   # install ambari-server package
 fab ambari_start            # Start ambari-server process
 ```
