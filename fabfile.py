@@ -3,7 +3,7 @@ from fabric.operations import run, put, sudo,local
 
 #env.use_ssh_config = True
 
-# CHANGE ME (change the PEM file)
+# CHANGE ME (change your SSH key)
 env.user  = 'root'
 env.key_filename = '~/.ssh/digitalocean_rsa'
 
@@ -13,9 +13,9 @@ domain = 'zouzias.org'
 with open('ambari-server.txt') as f:
     env.hosts = f.readlines()[0].strip() + '.' + domain
 
-##############################
-# Install puppet etc
-##############################
+#####################################
+# Install Ambari Repo and Repo key  #
+#####################################
 def init():
     put('ambari.list', '/etc/apt/sources.list.d/', use_sudo=True)
     sudo('apt-key adv --recv-keys --keyserver keyserver.ubuntu.com B9733A7A07513CAD')
@@ -33,6 +33,9 @@ def ambari_start():
 def ambari_status():
     sudo('ambari-server status')
 
+def ambari_restart():
+    sudo('ambari-server restart')
+
 def clients():
     with open('ambari-clients.txt') as f:
 	lines = f.readlines()
@@ -40,10 +43,6 @@ def clients():
 	for line in lines:
 	    env.hosts.append(line.strip() + '.' + domain)
 
-# Copy files puppet related files
-def copy_files():
-    put('default.pp', '/etc/puppet/manifests/', use_sudo=True)
-    
 def apt_clean():
     sudo('sudo dpkg --configure -a')
 
@@ -60,8 +59,8 @@ def stop_firewall():
     run('ufw disable')
 
 def install_ntp():
-   apt_update()
    sudo('apt-get install -y ntp')
+   start_ntp
 
 def install_ambari_agents():
    apt_update()
