@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+#
 # Creates a droplet with domain name prefix equal to each line on file `ambari-client.txt`
 #
 
@@ -26,9 +27,7 @@ puts "Selected droplet name: [" + name  + "]"
 
 # TODO fetch SSH keys from digitalocean
 droplet = DropletKit::Droplet.new(name: name + "." + @domain , region: @region, size: @client_size, image: @image, ssh_keys: [@sshkey.to_s])
-
 created = client.droplets.create(droplet)
-
 droplet_id = created.id
 
 while created.status != 'active' do
@@ -52,6 +51,5 @@ domain_record = DropletKit::DomainRecord.new(
 
 created = client.domain_records.create(domain_record, for_domain: @domain)
 print created.inspect
-
 
 end
