@@ -45,7 +45,7 @@ fab install_ntp             # install network time protocol
 fab install_ambari_server   # install ambari-server package
 fab ambari_start            # Start ambari-server process
 ```
-Make sure that the ambari-server process is running (connect to server droplet using `./connect.sh`)
+Make sure that the ambari-server process is running (connect to server droplet using `./connect.sh`). The last step `fab ambari_start` might fail, you might need to connect to the droplet and start the server manually.
 
 ### How to setup Apache ambari clients
 
