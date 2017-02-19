@@ -12,5 +12,5 @@
 #
 ## Important : Droplet RAM must be >= 8gb (if use hive/hdfs/spark)
 
-@server_size   = '1gb'
-@client_size   = '8gb'
+@server_size   = '4gb'
+@client_size   = '16gb'
